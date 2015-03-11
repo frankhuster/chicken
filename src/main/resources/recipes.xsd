@@ -1,0 +1,19 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:chicken:recipes">
+
+    <xs:element name="getRecipeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="country" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getRecipeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="recipe" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
