@@ -1,0 +1,8 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:chick="urn:chicken:recipes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <chick:getRecipeRequest>
+            <chick:country>France</chick:country>
+        </chick:getRecipeRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
