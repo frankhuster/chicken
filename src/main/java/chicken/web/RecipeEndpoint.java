@@ -18,7 +18,7 @@ public class RecipeEndpoint {
         this.recipeservice = recipeservice;
     }
 
-    @PayloadRoot(namespace = "urn:chicken:recipes", localPart = "getModificationsRequest")
+    @PayloadRoot(namespace = "urn:chicken:recipes", localPart = "getRecipeRequest")
     @ResponsePayload
     public GetRecipeResponse getRecipe(@RequestPayload GetRecipeRequest request) {
         GetRecipeResponse response = new GetRecipeResponse();
