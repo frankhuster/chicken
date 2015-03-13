@@ -20,6 +20,11 @@
             <artifactId>motech-platform-osgi-extender-fragment</artifactId>
             <version>${motech.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.motechproject</groupId>
+            <artifactId>motech-platform-web-security</artifactId>
+            <version>${motech.version}</version>
+        </dependency>
 
         <!-- OSGi IT -->
         <dependency>
@@ -94,6 +99,11 @@
             <artifactId>spring-aop</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.ws</groupId>
@@ -101,14 +111,14 @@
             <version>2.0.4.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>jdom</groupId>
-            <artifactId>jdom</artifactId>
-            <version>1.1</version>
-        </dependency>
-        <dependency>
             <groupId>jaxen</groupId>
             <artifactId>jaxen</artifactId>
             <version>1.1.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.saaj-impl</artifactId>
+            <version>1.3.9_2</version>
         </dependency>
 
         <!-- Repository -->
@@ -171,14 +181,18 @@
                 <configuration>
                     <instructions>
                         <Blueprint-Enabled>true</Blueprint-Enabled>
+                        <Context-Path>chicken</Context-Path>
                         <Resource-Path>chicken/resources</Resource-Path>
                         <Import-Package>
                             org.springframework.oxm,
                             org.springframework.ws.transport,
                             org.springframework.ws.transport.http,
+                            org.springframework.ws.soap,
                             org.springframework.ws.soap.saaj,
-                            org.springframework.web.servlet.handler,
                             org.springframework.ws.soap.server,
+                            org.springframework.ws.soap.server.endpoint,
+                            org.springframework.web.servlet.handler,
+                            org.springframework.web.servlet.mvc,
                             org.springframework.web.servlet.mvc.method.annotation,
                             *
                         </Import-Package>
@@ -186,8 +200,8 @@
                             chicken.service;version=${project.version},
                             chicken.repository;version=${project.version},
                             chicken.domain;version=${project.version},
+                            chicken.web;version=${project.version}
                         </Export-Package>
-                        <Import-Package>*</Import-Package>
                     </instructions>
                 </configuration>
             </plugin>
