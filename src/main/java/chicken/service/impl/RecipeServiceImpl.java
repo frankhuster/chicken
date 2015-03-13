@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Implementation of the {@link chicken.service.RecipeService} interface. Uses
@@ -18,10 +19,12 @@ import java.util.List;
 public class RecipeServiceImpl implements RecipeService {
 
     private RecipeDataService recipeDataService;
+    private Random randomGenerator;
 
     @Autowired
     public RecipeServiceImpl(RecipeDataService recipeDataService) {
         this.recipeDataService = recipeDataService;
+        randomGenerator = new Random();
 
         List<Recipe> existingRecipes = recipeDataService.retrieveAll();
         if (existingRecipes.size() == 0) {
@@ -51,6 +54,15 @@ public class RecipeServiceImpl implements RecipeService {
             return null;
         }
         return record;
+    }
+
+    @Override
+    public Recipe randomRecipe() {
+        // This is obviously very inefficient, nobody in their right might would load an entire table in memory
+        // to return a random record, but this is not the point of our chicken module!
+        List<Recipe> recipes = recipeDataService.retrieveAll();
+        int index = randomGenerator.nextInt(recipes.size());
+        return recipes.get(index);
     }
 
     @Override

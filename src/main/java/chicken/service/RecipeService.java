@@ -15,6 +15,8 @@ public interface RecipeService {
 
     Recipe findRecipeByCountry(String country);
 
+    Recipe randomRecipe();
+
     List<Recipe> getRecords();
 
     void delete(Recipe record);

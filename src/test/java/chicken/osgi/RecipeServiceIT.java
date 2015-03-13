@@ -59,13 +59,34 @@ public class RecipeServiceIT extends BasePaxIT {
     }
 
     @Test
-    public void verifySoapEndpoint() throws IOException, InterruptedException {
+    public void verifyPayloadRootEndpoint() throws IOException, InterruptedException {
         login();
 
         // TODO: Use a real SOAP client, not HTTP client
         // TODO: Some headers are not understood by the server
         HttpPost post;
-        try (InputStream in = getClass().getClassLoader().getResourceAsStream("request.xml")) {
+        try (InputStream in = getClass().getClassLoader().getResourceAsStream("recipe-request.xml")) {
+            String xml = IOUtils.toString(in);
+            post = new HttpPost(String.format("http://localhost:%d/chicken/", TestContext.getJettyPort()));
+            post.setEntity(new StringEntity(xml));
+        }
+
+        post.setHeader(HttpHeaders.CONTENT_TYPE, "application/soap+xml");
+
+        // TODO: Do something more with the response
+        String response = getHttpClient().execute(post, new BasicResponseHandler());
+        assertNotNull(response);
+        assertTrue(response.contains("env:Envelope"));
+    }
+
+    @Test
+    public void verifyActionEndpoint() throws IOException, InterruptedException {
+        login();
+
+        // TODO: Use a real SOAP client, not HTTP client
+        // TODO: Some headers are not understood by the server
+        HttpPost post;
+        try (InputStream in = getClass().getClassLoader().getResourceAsStream("random-recipe-request.xml")) {
             String xml = IOUtils.toString(in);
             post = new HttpPost(String.format("http://localhost:%d/chicken/", TestContext.getJettyPort()));
             post.setEntity(new StringEntity(xml));
