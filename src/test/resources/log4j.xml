@@ -10,8 +10,8 @@
         </layout>
     </appender>
 
-    <logger name="chicken.service">
-        <level value="DEBUG"/>
+    <logger name="chicken">
+        <level value="ALL"/>
     </logger>
 
     <logger name="org.springframework.web">
@@ -19,7 +19,7 @@
     </logger>
 
     <logger name="org.springframework.ws">
-        <level value="ALL"/>
+        <level value="ERROR"/>
     </logger>
 
     <root>

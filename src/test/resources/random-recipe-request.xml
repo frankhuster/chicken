@@ -1,4 +1,4 @@
-<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:chick="urn:chicken:recipes" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsa="http://www.w3.org/2005/08/addressing">
     <soap:Header>
         <wsa:Action>urn:chicken:recipes:GetRandomRecipeRequest</wsa:Action>
         <wsa:MessageID>urn:uuid:def119ad-dc13-49c1-a3c7-e3742531f9b3</wsa:MessageID>

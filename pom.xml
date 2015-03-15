@@ -130,8 +130,9 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.7</version>
+            <version>1.10</version>
         </dependency>
+
     </dependencies>
 
     <repositories>
@@ -168,7 +169,7 @@
                 </executions>
                 <configuration>
                     <schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>
-                    <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+                    <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
                     <clearOutputDir>false</clearOutputDir>
                 </configuration>
             </plugin>
